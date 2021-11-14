@@ -70,6 +70,9 @@
     "react",
     "redux"
   ],
+  "engines": {
+    "node": "12.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mackraja/getting-react.git"

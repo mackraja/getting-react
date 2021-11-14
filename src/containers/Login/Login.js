@@ -79,7 +79,7 @@ class Login extends Component {
                                                     </span>
                                                 </div>
                                                 <Field
-                                                    name="username"
+                                                    name="userName"
                                                     type="text"
                                                     placeholder="UserName"
                                                     component={TextBox}

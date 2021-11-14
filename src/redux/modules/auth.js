@@ -68,13 +68,13 @@ export const load = (forced) => async (dispatch, getState, api) => {
     dispatch({ type: auth.LOAD });
     try {
         const res = await api.get('/v1/session');
-        console.log('Forced ===== ', res);
-        if (res.message) {
-            dispatch({ type: auth.LOAD_FAIL, error: res.message });
+        console.log('Forced ===== ', res.data);
+        if (!res.data) {
+            dispatch({ type: auth.LOAD_FAIL, error: 'Failed to Load !!' });
             return;
         }
-        dispatch({ type: auth.LOAD_SUCCESS, user: res });
-        return res;
+        dispatch({ type: auth.LOAD_SUCCESS, user: res.data });
+        return res.data;
     } catch (error) {
         dispatch({ type: auth.LOAD_FAIL, error: error });
     }
@@ -84,8 +84,8 @@ export const login = (data) => async (dispatch, getState, api) => {
     dispatch({ type: auth.LOGIN });
     try {
         const res = await api.post('/v1/session', { data } );
-        const { Token } = res;
-        store('authToken', Token);
+        const { token } = res.data;        
+        store('authToken', token);
 
         dispatch({ type: auth.LOGIN_SUCCESS });
         dispatch(load(true));
