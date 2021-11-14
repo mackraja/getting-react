@@ -3,8 +3,7 @@
 * https://getting-react.herokuapp.com/
 
 ### Local Environment Setup
-* Use Node Version: ^10.x.x
-* Use NPM Version: ^6.4.1
+* Use Node Version: v12.x
 
 ##### Clone Project: 
 
